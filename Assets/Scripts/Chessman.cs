@@ -67,6 +67,7 @@ public class Chessman : MonoBehaviour
     public int GetXBoard()
     {
         return xBoard;
+
     }
 
     public int GetYBoard()

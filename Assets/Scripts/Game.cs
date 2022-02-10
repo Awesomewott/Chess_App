@@ -6,8 +6,13 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+
     //Reference from Unity IDE
     public GameObject chesspiece;
+    public bool isPressed;
+    bool hasBreenUsed;
+    List<int> list = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+
 
     //Matrices needed, positions of each of the GameObjects
     //Also separate arrays for the players in order to easily keep track of them all
@@ -26,9 +31,9 @@ public class Game : MonoBehaviour
     //that Unity can call for you
     public void Start()
     {
-        playerWhite = new GameObject[] { Create("white_rook", 0, 0), Create("white_knight", 1, 0),
-            Create("white_bishop", 2, 0), Create("white_queen", 3, 0), Create("white_king", 4, 0),
-            Create("white_bishop", 5, 0), Create("white_knight", 6, 0), Create("white_rook", 7, 0),
+        playerWhite = new GameObject[] { Create("white_rook", Create960Spawn(list), 0), Create("white_knight", Create960Spawn(list), 0),
+            Create("white_bishop", Create960Spawn(list), 0), Create("white_queen", Create960Spawn(list), 0), Create("white_king", Create960Spawn(list), 0),
+            Create("white_bishop", Create960Spawn(list), 0), Create("white_knight", Create960Spawn(list), 0), Create("white_rook", Create960Spawn(list), 0),
             Create("white_pawn", 0, 1), Create("white_pawn", 1, 1), Create("white_pawn", 2, 1),
             Create("white_pawn", 3, 1), Create("white_pawn", 4, 1), Create("white_pawn", 5, 1),
             Create("white_pawn", 6, 1), Create("white_pawn", 7, 1) };
@@ -56,6 +61,20 @@ public class Game : MonoBehaviour
         cm.SetYBoard(y);
         cm.Activate(); //It has everything set up so it can now Activate()
         return obj;
+    }
+
+    public int Create960Spawn(List<int> list)
+    {
+        var rand = new System.Random();
+        int index = rand.Next(list.Count);
+        Debug.Log(index);
+
+        var value = list[index];
+
+        list.RemoveAt(index);
+
+        return value;
+
     }
 
     public void SetPosition(GameObject obj)
