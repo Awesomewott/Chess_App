@@ -9,9 +9,10 @@ public class Game : MonoBehaviour
 
     //Reference from Unity IDE
     public GameObject chesspiece;
-    public bool isPressed = false;
+    public static bool isPressed = false;
     bool hasBreenUsed;
     List<int> piecepositionList = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+    
 
     //Matrices needed, positions of each of the GameObjects
     //Also separate arrays for the players in order to easily keep track of them all
@@ -30,62 +31,26 @@ public class Game : MonoBehaviour
     //that Unity can call for you
     public void Start()
     {
-        Create960Spawn();
+        if (isPressed == true)
+        {
+            Create960Spawn();
+        }
 
-        //if(isPressed == false)
-        //{
-            //playerWhite = new GameObject[] { 
-            //    Create("white_bishop", Create960Spawn(wList), 0), 
-            //    Create("white_bishop", Create960Spawn(wList), 0),
-            //Create("white_rook", Create960Spawn(wList), 0),
-            //    Create("white_queen", Create960Spawn(wList), 0),
-            //    Create("white_king", Create960Spawn(wList), 0),
-            //Create("white_knight", Create960Spawn(wList), 0), 
-            //    Create("white_knight", Create960Spawn(wList), 0),
-            //    Create("white_rook", Create960Spawn(wList), 0),
-            //Create("white_pawn", 0, 1),
-            //    Create("white_pawn", 1, 1), 
-            //    Create("white_pawn", 2, 1),
-            //Create("white_pawn", 3, 1), 
-            //    Create("white_pawn", 4, 1), 
-            //    Create("white_pawn", 5, 1),
-            //Create("white_pawn", 6, 1), 
-            //    Create("white_pawn", 7, 1) };
-            //playerBlack = new GameObject[] { 
-            //    Create("black_bishop", Create960Spawn(bList),7),
-            //    Create("black_bishop", Create960Spawn(bList),7),
-            //Create("black_rook", Create960Spawn(bList) ,7),
-            //    Create("black_queen", Create960Spawn(bList) ,7),
-            //    Create("black_king", Create960Spawn(bList),7),
-            //Create("black_knight", Create960Spawn(bList) ,7),
-            //    Create("black_knight", Create960Spawn(bList),7),
-            //    Create("black_rook", Create960Spawn(bList),7),
-            //Create("black_pawn", 0, 6),
-            //    Create("black_pawn", 1, 6),
-            //    Create("black_pawn", 2, 6),
-            //Create("black_pawn", 3, 6),
-            //    Create("black_pawn", 4, 6), 
-            //    Create("black_pawn", 5, 6),
-            //Create("black_pawn", 6, 6),
-            //    Create("black_pawn", 7, 6) };
-        //}
-
-        //else
-        //{
-        //    playerwhite = new gameobject[] { create("white_rook", 0, 0), create("white_knight", 1, 0),
-        //        create("white_bishop", 2, 0), create("white_queen", 3, 0), create("white_king", 4, 0),
-        //        create("white_bishop", 5, 0), create("white_knight", 6, 0), create("white_rook", 7, 0),
-        //        create("white_pawn", 0, 1), create("white_pawn", 1, 1), create("white_pawn", 2, 1),
-        //        create("white_pawn", 3, 1), create("white_pawn", 4, 1), create("white_pawn", 5, 1),
-        //        create("white_pawn", 6, 1), create("white_pawn", 7, 1) };
-        //    playerblack = new gameobject[] { create("black_rook", 0, 7), create("black_knight",1,7),
-        //        create("black_bishop",2,7), create("black_queen",3,7), create("black_king",4,7),
-        //        create("black_bishop",5,7), create("black_knight",6,7), create("black_rook",7,7),
-        //        create("black_pawn", 0, 6), create("black_pawn", 1, 6), create("black_pawn", 2, 6),
-        //        create("black_pawn", 3, 6), create("black_pawn", 4, 6), create("black_pawn", 5, 6),
-        //        create("black_pawn", 6, 6), create("black_pawn", 7, 6) };
-        //}
-        
+        else if (isPressed == false)
+        {
+            playerWhite = new GameObject[] { Create("white_rook", 0, 0), Create("white_knight", 1, 0),
+                Create("white_bishop", 2, 0), Create("white_queen", 3, 0), Create("white_king", 4, 0),
+                Create("white_bishop", 5, 0), Create("white_knight", 6, 0), Create("white_rook", 7, 0),
+                Create("white_pawn", 0, 1), Create("white_pawn", 1, 1), Create("white_pawn", 2, 1),
+                Create("white_pawn", 3, 1), Create("white_pawn", 4, 1), Create("white_pawn", 5, 1),
+                Create("white_pawn", 6, 1), Create("white_pawn", 7, 1) };
+            playerBlack = new GameObject[] { Create("black_rook", 0, 7), Create("black_knight",1,7),
+                Create("black_bishop",2,7), Create("black_queen",3,7), Create("black_king",4,7),
+                Create("black_bishop",5,7), Create("black_knight",6,7), Create("black_rook",7,7),
+                Create("black_pawn", 0, 6), Create("black_pawn", 1, 6), Create("black_pawn", 2, 6),
+                Create("black_pawn", 3, 6), Create("black_pawn", 4, 6), Create("black_pawn", 5, 6),
+                Create("black_pawn", 6, 6), Create("black_pawn", 7, 6) };
+        }
 
         //Set all piece positions on the positions board
         for (int i = 0; i < playerBlack.Length; i++)
