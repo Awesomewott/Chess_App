@@ -11,7 +11,7 @@ public class Game : MonoBehaviour
     public GameObject chesspiece;
     public static bool isPressed = false;
     bool hasBreenUsed;
-    List<int> piecepositionList = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+    public List<int> piecepositionList = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
     
 
     //Matrices needed, positions of each of the GameObjects
@@ -116,55 +116,6 @@ public class Game : MonoBehaviour
 
         return 1;
 
-    }
-
-    public int Create960Spawn(List<int> list)
-    {
-        var rand = new System.Random();
-        int index = rand.Next(list.Count);
-        //int wbIndex = rand.Next(blackBSpawn.Count);
-        Debug.Log(index);
-        // have bishops spawn in odd and even positions
-       
-
-        var value = list[index];
-
-        if (list[index] % 2 == 0)
-        {
-            list.RemoveAt(index);
-        }
-
-        else
-        {  
-            list.RemoveAt(index);
-        }
-       
-
-        return value;
-
-    }
-
-    public int Create960BishopSpawn(List<int> list)
-    {
-        var rand = new System.Random();
-        int index = rand.Next(list.Count);
-
-
-        var value = list[index];
-        Debug.Log(value);
-
-        if (list[index] % 2 == 0)
-        {
-            list.RemoveAt(index);
-        }
-
-        else
-        {
-            list.RemoveAt(index);
-        }
-
-
-        return value;
     }
 
     public void SetPosition(GameObject obj)
